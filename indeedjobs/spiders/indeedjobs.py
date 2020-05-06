@@ -7,13 +7,21 @@ import hashlib
 def current_milli_time(): return int(round(time.time() * 1000))
 
 
+# Command to Run : 
+# 1. scrapy crawl indeedjobs -a category='Python' -a location='India'
+# 1. scrapy crawl indeedjobs -a category='Python Data Science' -a location='India'
+
 class IndeedJobs(scrapy.Spider):
     name = 'indeedjobs'
-    start_urls = [
-        # 'https://www.google.com/search?q=Python+jobs&ibp=htl;jobs'
-        # 'https://www.indeed.co.in/jobs?q=Python&l=India'
-        'https://www.indeed.co.in/jobs?q=elixir&l=India'
-    ]
+    
+    def __init__(self, category='elixir', location='India', *args, **kwargs):
+        super(IndeedJobs, self).__init__(*args, **kwargs)
+        self.start_urls = [
+                # 'https://www.google.com/search?q=Python+jobs&ibp=htl;jobs'
+                # 'https://www.indeed.co.in/jobs?q=Python&l=India'
+                # 'https://www.indeed.co.in/jobs?q=elixir&l=India'
+                f'https://www.indeed.co.in/jobs?q={category}&l={location}'
+            ]
 
     page_index = 1
     force_load_count = 0

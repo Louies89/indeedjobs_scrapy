@@ -1,4 +1,6 @@
 # pip install spacy
+# pip install spacy-lookup
+# pip install spacy-lookups-data
 # pip install nltk
 # nltk.download('punkt')
 # nltk.download('stopwords')
